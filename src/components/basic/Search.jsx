@@ -6,7 +6,7 @@ import { BsSearch } from 'react-icons/bs'
 const Search = () => {
   return (
     <div className="relative  rounded-xl">
-      <label for="Search" className="sr-only font-semibold "> Search </label>
+      <label htmlFor="Search" className="sr-only font-semibold "> Search </label>
       <input
         type="text"
         id="Search"

@@ -3,7 +3,7 @@ import "react-circular-progressbar/dist/styles.css"
 import { BsGraphDownArrow, BsGraphUpArrow } from 'react-icons/bs'
 
 
-const Circularbar = () => {
+const Circularbar = ({ growthPercentage }) => {
 
 
   return (
@@ -11,13 +11,13 @@ const Circularbar = () => {
         <h2 className="flex justify-center mt-3 text-xl text-gray-400 font-medium py-4">Todays Posts </h2>
 
       <CircularProgressbar
-        value={70}
-        text={"70%"}
+        value={growthPercentage}
+        text={`${growthPercentage}%`}
         strokeWidth={5}
       />
      
       <div className="flex justify-center mt-3">
-        <h2 className="text-2xl text-gray-800 font-medium">100 </h2>
+        <h2 className="text-2xl text-gray-800 font-medium">{growthPercentage} </h2>
       </div>
 
       

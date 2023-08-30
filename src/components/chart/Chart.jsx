@@ -2,16 +2,16 @@ import React from 'react'
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 
-const Chart = () => {
+const Chart = ({data}) => {
 
-  const data = [
-    { name: "January", Total: 5200 },
-    { name: "February", Total: 1000 },
-    { name: "March", Total: 240 },
-    { name: "April", Total: 5000 },
-    { name: "May", Total: 1590 },
-    { name: "June", Total: 1130 },
-  ]
+  // const data = [
+  //   { name: "January", Total: 5200 },
+  //   { name: "February", Total: 1000 },
+  //   { name: "March", Total: 240 },
+  //   { name: "April", Total: 5000 },
+  //   { name: "May", Total: 1590 },
+  //   { name: "June", Total: 1130 },
+  // ]
 
   return (
     <ResponsiveContainer width="100%" aspect={2 / 1} >

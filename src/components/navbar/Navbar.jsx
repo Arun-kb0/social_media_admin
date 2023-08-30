@@ -16,9 +16,7 @@ const Navbar = () => {
 
   const handleProfileMenu = () => {
     setIsProfileMenuOpen(!isProfileMenuOpen)
-    console.log(
-      isProfileMenuOpen
-    )
+    console.log(isProfileMenuOpen)
   }
 
   

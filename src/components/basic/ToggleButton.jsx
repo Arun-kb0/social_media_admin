@@ -2,7 +2,7 @@ import React from 'react'
 
 const ToggleButton = () => {
   return (
-    <label for="AcceptConditions" className="relative h-8 w-14 cursor-pointer">
+    <label htmlFor="AcceptConditions" className="relative h-8 w-14 cursor-pointer">
       <input type="checkbox" id="AcceptConditions" className="peer sr-only" />
 
       <span className="absolute inset-0 rounded-full bg-gray-300 transition peer-checked:bg-green-500"></span>
