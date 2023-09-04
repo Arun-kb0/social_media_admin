@@ -1,7 +1,8 @@
 import * as api from '../../../api/apiIndex'
 import {
   GET_CHART_DATA_FAILED, GET_CHART_DATA_START, GET_CHART_DATA_SUCCESS,
-  GET_COUNTS_FAILED, GET_COUNTS_START, GET_COUNTS_SUCCESS
+  GET_COUNTS_FAILED, GET_COUNTS_START, GET_COUNTS_SUCCESS,
+  GET_POST_FAILED, GET_POST_START, GET_POST_SUCCESS
 } from '../../../constants/actionTypes'
 
 
@@ -18,8 +19,6 @@ export const getCountData = () => async (dispatch, getState) => {
   }
 }
 
-
-
 export const getchartData = () => async (dispatch, getState) => {
   const { token } = getState().auth
   dispatch({ type: GET_CHART_DATA_START })
@@ -31,5 +30,16 @@ export const getchartData = () => async (dispatch, getState) => {
     dispatch({ type: GET_CHART_DATA_FAILED, payload: error })
     console.log(error)
 
+  }
+}
+
+export const getPosts = (page) => async (dispatch) => {
+  dispatch({ type: GET_POST_START })
+  try {
+    const { data } = await api.getPosts(page)
+
+    dispatch({ type: GET_POST_SUCCESS, payload: data })
+  } catch (error) {
+    dispatch({ type: GET_POST_FAILED, payload: error })
   }
 }

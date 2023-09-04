@@ -5,14 +5,14 @@ import { HiOutlineClipboardDocumentList } from 'react-icons/hi2'
 import { BsFillFileEarmarkPostFill } from 'react-icons/bs'
 import { AiFillSetting, AiOutlineUser } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../redux/features/auth/authActions'
 
 
 const Sidebar = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-
+  const { token } = useSelector(state => state.auth)
 
 
 
@@ -34,20 +34,17 @@ const Sidebar = () => {
     }
   }
 
-
-  const handleDashbord= () => {
+  const handleDashbord = () => {
     if (window.location !== '/') {
       navigate('/')
     }
   }
-
 
   const hadleLogin = () => {
     if (window.location !== '/auth') {
       navigate('/auth')
     }
   }
-
 
   const hadleLogout = () => {
     dispatch(logout())
@@ -56,7 +53,14 @@ const Sidebar = () => {
     }
   }
 
-  
+  const handleLogPage = () => {
+    if (window.location.pathname !== '/log') {
+      navigate('/logs')
+    }
+  }
+
+
+
 
 
   return (
@@ -78,7 +82,7 @@ const Sidebar = () => {
           <HiOutlineUsers size={32} />
           Users
         </span>
-        <span className="sidebarListItem" onClick={handlePosts}> 
+        <span className="sidebarListItem" onClick={handlePosts}>
           <BsFillFileEarmarkPostFill size={32} />
           Posts
         </span>
@@ -98,7 +102,7 @@ const Sidebar = () => {
           <BiServer size={32} />
           System Health
         </span>
-        <span className="sidebarListItem">
+        <span className="sidebarListItem" onClick={handleLogPage}>
           <HiOutlineClipboardDocumentList size={32} />
           Log
         </span>
@@ -115,14 +119,15 @@ const Sidebar = () => {
           <AiOutlineUser size={32} />
           Profile
         </span>
-        <span className="sidebarListItem" onClick={hadleLogout}>
-          <BiLogOut size={32} />
-          Logout
-        </span>
-        <span className="sidebarListItem" onClick={hadleLogin}>
-          <BiLogIn size={32} />
-          Login
-        </span>
+        {token
+          ? <span className="sidebarListItem" onClick={hadleLogout}>
+            <BiLogOut size={32} />
+            Logout
+          </span>
+          : <span className="sidebarListItem" onClick={hadleLogin}>
+            <BiLogIn size={32} />
+            Login
+          </span>}
 
       </div>
 

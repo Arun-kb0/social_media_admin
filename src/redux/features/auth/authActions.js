@@ -9,12 +9,13 @@ export const login = ({ authData }) => async (dispatch) => {
 
   try {
 
-    const { data } = await api.login(authData)
-    console.log(data)
+    const authRes = await api.login(authData)
+    console.log(authRes)
+    const {  status,data } = authRes
     dispatch({ type: LOGIN_SUCCESS, payload: data })
   } catch (error) {
     console.log(error)
-    dispatch({ type: LOGIN_FAILED, payload: error })
+    dispatch({ type: LOGIN_FAILED, payload: error.message })
 
   }
 }

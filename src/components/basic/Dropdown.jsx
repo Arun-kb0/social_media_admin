@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Dropdown = ({ ListItemNames, ListItemIcons, position }) => {
+// ! add onclick function
+const Dropdown = ({ ListItems, position }) => {
 
   return (
     <div className="relative">
@@ -8,13 +9,14 @@ const Dropdown = ({ ListItemNames, ListItemIcons, position }) => {
         role="menu"
       >
         <div className="p-2">
-          {ListItemNames?.map((name, index) => (
+          {ListItems?.map(({name,icon,onClick}, index) => (
             <span 
               className="flex justify-start items-center rounded-lg gap-2 px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
               role="menuitem"
               key={name}
+              onClick={onClick}
             >
-              {ListItemIcons[index]}
+              {icon}
               {name}
             </span>
           ))}

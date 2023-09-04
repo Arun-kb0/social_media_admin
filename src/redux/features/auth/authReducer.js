@@ -1,5 +1,6 @@
 import {
-  LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILED, LOGOUT_START, LOGOUT_SUCCESS, LOGOUT_FAILED, LOCALSTORAGE_USER
+  LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILED,
+  LOGOUT_START, LOGOUT_SUCCESS, LOGOUT_FAILED, LOCALSTORAGE_USER,
 } from "../../../constants/actionTypes";
 
 
@@ -9,6 +10,9 @@ const initialState = {
   token: null,
   name: null,
   email: null,
+
+  photo:null,
+  error:null,
   loading: false,
 }
 
@@ -64,6 +68,7 @@ const authReducer = (state = initialState, action) => {
         email: action.payload?.user?.email,
       }
     }
+    
 
     default: { return state }
   }

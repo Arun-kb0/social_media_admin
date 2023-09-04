@@ -2,24 +2,63 @@ import React, { useState } from 'react'
 import { IoMenu } from 'react-icons/io5'
 import { MdOutlineDarkMode } from 'react-icons/md'
 import { BsChatRightDots } from 'react-icons/bs'
-import { BiBell, BiLogIn ,BiLogOut } from 'react-icons/bi'
+import { BiBell, BiLogIn, BiLogOut } from 'react-icons/bi'
 import IconButton from '../basic/IconButton'
 import Search from '../basic/Search'
 import Dropdown from '../basic/Dropdown'
 import { AiOutlineUser } from 'react-icons/ai'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { logout } from '../../redux/features/auth/authActions'
+import Avatar from '../basic/Avatar'
 
 
 const Navbar = () => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false)
-// ! temp url
-  const imageUrl = new window.URL("https://images.pexels.com/photos/17086829/pexels-photo-17086829/free-photo-of-woman-posing-with-hands-on-curly-hair.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")
+  const { token, photo, name } = useSelector(state => state.auth)
+
 
   const handleProfileMenu = () => {
     setIsProfileMenuOpen(!isProfileMenuOpen)
     console.log(isProfileMenuOpen)
   }
 
-  
+  const handleLogin = () => {
+    window.location.pathname !== '/auth' && navigate('/auth')
+  }
+
+  const handleLogout = () => {
+    dispatch(logout())
+    navigate('/auth')
+  }
+
+  const handleProfile = () => {
+    window.location.pathname !== '/profile' && navigate('/profile')
+  }
+
+  const listItem = [
+    token
+      ? {
+        name: "Logout",
+        icon: <BiLogIn size={22} />,
+        onClick: handleLogout
+      }
+      : {
+        name: "Login",
+        icon: <BiLogIn size={22} />,
+        onClick: handleLogin
+      },
+    {
+      name: "Profile",
+      icon: <AiOutlineUser size={22} />,
+      onClick: handleProfile
+    },
+  ]
+
+
   return (
     <div className=' h-16 flex justify-between items-center bg-slate-100'>
 
@@ -37,25 +76,18 @@ const Navbar = () => {
         <IconButton icon={<BiBell size={24} />} />
         <IconButton icon={<BsChatRightDots size={24} />} />
 
-        {imageUrl
-          ? < img
-          className=' w-11 h-11 rounded-full object-cover'
-          src={imageUrl}
-          alt=""
-          onClick={handleProfileMenu}
-          />
-          : <div className='flex justify-center items-center w-11 h-11 rounded-full bg-orange-600 text-3xl'>
-            {"A"}
-          </div>
-        }
+        {token && <div className='w-11 h-11 '>
+          <Avatar image={photo} name={name} />
+        </div>}
+
+
       </div>
 
       {isProfileMenuOpen && <Dropdown
-        ListItemNames={["Profile", "Login","Logout"]}
-        ListItemIcons={[<AiOutlineUser  size={22}/>, <BiLogIn  size={22}/>, <BiLogOut size={22}/>]}
+        ListItems={listItem}
         position={"end-2 mt-7"}
       />}
-      
+
     </div>
   )
 }

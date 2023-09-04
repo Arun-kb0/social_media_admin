@@ -47,7 +47,7 @@ const Auth = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     console.log(inputError)
-    console.log(error?.response.data?.message)
+    console.log(error)
 
     if (!inputError.isError && authData.email.length > 1) {
       console.log("res")
@@ -78,7 +78,7 @@ const Auth = () => {
   return (
     <div className='flex justify-center items-center h-[100vh]'>
       <AlertBox
-        error={error?.response.data?.message}
+        error={error}
         isError={inputError}
       />
 

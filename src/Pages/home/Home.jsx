@@ -26,7 +26,6 @@ const Home = () => {
   }, [])
 
   return (
-    // <div className=''>
     <div className="flex ">
 
       <div className={`left w-2/12`}>
@@ -82,7 +81,6 @@ const Home = () => {
       </div>
 
     </div>
-    // </div>
   )
 }
 
