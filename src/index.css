@@ -52,6 +52,17 @@
     @apply text-blue-800 cursor-pointer
   }
 
+  .btn {
+    @apply inline-block rounded-xl bg-indigo-600 px-8 py-3 text-sm font-medium text-white transition
+  }
+
+  .btn:hover {
+    @apply scale-110 shadow-xl
+  }
+
+  .btn:focus {
+    @apply outline-none ring bg-indigo-500
+  }
 
   .sidebarListItem {
     @apply flex justify-start items-center rounded-tl-3xl rounded-bl-3xl gap-2 px-6 py-2 text-sm text-gray-500
@@ -64,6 +75,8 @@
   .sidebarListItem:active {
     @apply bg-white text-gray-700 cursor-pointer
   }
+
+
 
 
 }

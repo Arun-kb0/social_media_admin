@@ -4,7 +4,6 @@ import {
 import * as api from '../../../api/apiIndex'
 
 
-// ! code separate route for all admin side on backend
 export const getUsers = (page) =>async (dispatch)=> {
   dispatch({type:GET_USERS_START})
   try {
@@ -16,3 +15,4 @@ export const getUsers = (page) =>async (dispatch)=> {
     dispatch({type:GET_USERS_FAILED,payload:error})
   }
 }
+

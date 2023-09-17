@@ -11,7 +11,7 @@ const Dropdown = ({ ListItems, position }) => {
         <div className="p-2">
           {ListItems?.map(({name,icon,onClick}, index) => (
             <span 
-              className="flex justify-start items-center rounded-lg gap-2 px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+              className="flex justify-start items-center rounded-lg gap-2 px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700 cursor-pointer"
               role="menuitem"
               key={name}
               onClick={onClick}

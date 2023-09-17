@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom'
 import AlertBox from '../../components/basic/AlertBox'
 
 
+//* password  Admin123##
+
 const Auth = () => {
   const initialAuthState = {
     email: '',
@@ -43,7 +45,6 @@ const Auth = () => {
   }
 
 
-  //* password  Admin123##
   const handleSubmit = async (e) => {
     e.preventDefault()
     console.log(inputError)

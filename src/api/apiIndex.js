@@ -41,8 +41,10 @@ export const login = (data) => API.post('/login', data, { cancelToken: source.to
 export const getAllCounts = () => API.get('/counts', { cancelToken: source.token })
 export const getChartData = () => API.get('/chartData', { cancelToken: source.token })
 
-export const getPosts = (page) => ClientRoute.get(`/posts?page=${page}`, { cancelToken: source.token })
+export const getPosts = (page) => API.get(`/posts?page=${page}`, { cancelToken: source.token })
 
 export const getUsers = (page) => API.get(`/users?page=${page}`, { cancelToken: source.token })
 
+export const getReqLog = (page) => API.get(`/logs/req?page=${page}`, { cancelToken: source.token })
+export const getErrorLog = (page) => API.get(`/logs/error?page=${page}`, { cancelToken: source.token })
 
